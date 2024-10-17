@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	make_firstmoves(t_stack **a, t_stack **b)
+static void	make_firstmoves(t_stack **a, t_stack **b)
 {
 	int	rb_move;
 	int	rrb_move;
@@ -38,7 +38,7 @@ void	make_firstmoves(t_stack **a, t_stack **b)
 	}
 }
 
-void	make_secondmoves(t_stack **a, t_stack **b)
+static void	make_secondmoves(t_stack **a, t_stack **b)
 {
 	int	rra_move;
 	int	rr_move;

@@ -29,18 +29,18 @@ static void	op_rotate(t_stack **head)
 void	ra(t_stack **a)
 {
 	op_rotate(a);
-	printf("ra\n");
+	ft_printf("ra\n");
 }
 
 void	rb(t_stack **b)
 {
 	op_rotate(b);
-	printf("rb\n");
+	ft_printf("rb\n");
 }
 
 void	rr(t_stack **a, t_stack **b)
 {
 	op_rotate(a);
 	op_rotate(b);
-	printf("rr\n");
+	ft_printf("rr\n");
 }

@@ -34,15 +34,15 @@ int	check_max(t_stack *b, int value)
 	return (1);
 }
 
-int	max_b(t_stack *b, int max_b)
+int	max(t_stack *lst, int max)
 {
-	while (b != NULL)
+	while (lst != NULL)
 	{
-		if (max_b < b->content)
-			max_b = b->content;
-		b = b->next;
+		if (max < lst->content)
+			max = lst->content;
+		lst = lst->next;
 	}
-	return (max_b);
+	return (max);
 }
 
 int	min_a(t_stack *a)

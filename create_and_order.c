@@ -30,7 +30,8 @@ void	order_stack(t_stack **a, t_stack **b)
 		else if (ps_lstsize(*a) > 3)
 		{
 			pb(a, b);
-			pb(a, b);
+			if (ps_lstsize(*a) > 3)
+				pb(a, b);
 			while (ps_lstsize(*a) > 3)
 			{
 				make_move(a, b);

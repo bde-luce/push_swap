@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	check_int(int argc, char **argv)
+static int	check_int(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -35,7 +35,7 @@ int	check_int(int argc, char **argv)
 	return (1);
 }
 
-int	check_lim(int argc, char **argv)
+static int	check_lim(int argc, char **argv)
 {
 	int		i;
 	long	num;
@@ -51,7 +51,7 @@ int	check_lim(int argc, char **argv)
 	return (1);
 }
 
-int	check_dup(int argc, char **argv)
+static int	check_dup(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -83,6 +83,6 @@ int	check_error(int argc, char **argv)
 				return (1);
 		}
 	}
-	write(2, "ERROR\n", 6);
+	write(2, "Error\n", 6);
 	return (0);
 }

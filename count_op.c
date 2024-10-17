@@ -19,20 +19,21 @@ int	count_rb(t_stack *b, int value)
 	moves = 0;
 	if (check_min(b, value) || check_max(b, value))
 	{
-		while ((b->content < max_b(b, b->content)) && (b->next != NULL))
+		while ((b->content < max(b, b->content))/* && (b->next != NULL)*/)
 		{
 			moves++;
 			b = b->next;
 		}
 	}
-	else
-	{
-		while ((b->content > value) && (b->next != NULL))
+	else if (b->content > value || ps_lstlast(b)->content < value)
 		{
-			moves++;
-			b = b->next;
+			moves = 1;
+			while ((value > b->content || value < b->next->content)/* && (b->next->next != NULL)*/)
+			{
+				moves++;
+				b = b->next;
+			}
 		}
-	}
 	return (moves);
 }
 
@@ -43,24 +44,24 @@ int	count_rrb(t_stack *b, int value)
 	moves = 0;
 	if (check_min(b, value) || check_max(b, value))
 	{
+		while ((b->content < max(b, b->content))/* && (b->next != NULL)*/)
+			b = b->next;
 		while (b != NULL)
 		{
-			while ((b->content < max_b(b, b->content)) && (b->next != NULL))
-				b = b->next;
 			moves++;
 			b = b->next;
 		}
 	}
-	else
-	{
-		while (b != NULL)
+	else if (b->content > value || ps_lstlast(b)->content < value)
 		{
-			while ((b->content > value) && (b->next != NULL))
+			while ((value > b->content || value < b->next->content) && (b->next->next != NULL))
 				b = b->next;
-			moves++;
-			b = b->next;
+			while (b->next != NULL)
+			{
+				moves++;
+				b = b->next;
+			}
 		}
-	}
 	return (moves);
 }
 

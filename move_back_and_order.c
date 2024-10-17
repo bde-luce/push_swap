@@ -23,6 +23,24 @@ int	check_order(t_stack *a)
 	return (1);
 }
 
+/*void	order_last3(t_stack **a)
+{
+	int	x;
+	int	y;
+
+	while (!check_order(*a))
+	{
+		x = (*a)->content;
+		y = (*a)->next->content;
+		if (check_max(*a, x))
+			ra(a);
+		else if (check_max(*a, y))
+			rra(a);
+		else
+			sa(a);
+	}
+}*/
+
 void	order_last3(t_stack **a)
 {
 	int	x;
@@ -43,12 +61,12 @@ void	order_last3(t_stack **a)
 	}
 }
 
-int	next_value(t_stack *a, t_stack *b, int value)
+int	next_value(t_stack *a, int value)
 {
 	int	c;
 
-	if (check_max(a, value) && check_max(b, value))
-		c = a->content;
+	if (check_max(a, value))
+		c = min_a(a);
 	else
 	{
 		while (a->content < value && a->next != NULL)
@@ -70,8 +88,8 @@ void	make_move_back(t_stack **a, t_stack **b)
 	int	ra_move_back;
 	int	rra_move_back;
 
-	ra_move_back = count_ra(*a, next_value(*a, *b, (*b)->content));
-	rra_move_back = count_rra(*a, next_value(*a, *b, (*b)->content));
+	ra_move_back = count_ra(*a, next_value(*a, (*b)->content));
+	rra_move_back = count_rra(*a, next_value(*a, (*b)->content));
 	if (ra_move_back < rra_move_back)
 	{
 		while (ra_move_back > 0)

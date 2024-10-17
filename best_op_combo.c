@@ -59,10 +59,12 @@ int	rrb_ra_best(t_stack *a, t_stack *b, int value)
 	int	ra_move;
 	int	rra_move;
 
+	//printf("banana\n\n\n");
 	rb_move = count_rb(b, value);
 	rrb_move = count_rrb(b, value);
 	ra_move = count_ra(a, value);
 	rra_move = count_rra(a, value);
+	//printf("count_rb:%d\ncount_rrb:%d\ncount_ra:%d\ncount_rra:%d\n", rb_move, rrb_move, ra_move, rra_move);
 	if ((rrb_move + ra_move) >= bigger(rb_move, ra_move))
 		return (0);
 	if ((rrb_move + ra_move) >= rb_move + rra_move)

@@ -19,7 +19,7 @@ int	bigger(int a, int b)
 	return (b);
 }
 
-int	min_move(t_stack *a, t_stack *b, int value)
+static int	min_move(t_stack *a, t_stack *b, int value)
 {
 	int	rb_move;
 	int	rrb_move;

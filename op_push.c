@@ -25,11 +25,11 @@ static void	op_push(t_stack **head1, t_stack **head2)
 void	pa(t_stack **a, t_stack **b)
 {
 	op_push(b, a);
-	printf("pa\n");
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
 	op_push(a, b);
-	printf("pb\n");
+	ft_printf("pb\n");
 }
