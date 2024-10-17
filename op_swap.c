@@ -27,18 +27,18 @@ static void	op_swap(t_stack **head)
 void	sa(t_stack **a)
 {
 	op_swap(a);
-	printf("sa\n");
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack **b)
 {
 	op_swap(b);
-	printf("sb\n");
+	ft_printf("sb\n");
 }
 
 void	ss(t_stack **a, t_stack **b)
 {
 	op_swap(a);
 	op_swap(b);
-	printf("ss\n");
+	ft_printf("ss\n");
 }
