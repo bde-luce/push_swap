@@ -12,12 +12,10 @@
 
 #include "push_swap.h"
 
-static int	check_int(int argc, char **argv)
+static int	check_int(int argc, char **argv, int i)
 {
-	int	i;
 	int	j;
 
-	i = 1;
 	while (i < argc)
 	{
 		j = 0;
@@ -25,7 +23,7 @@ static int	check_int(int argc, char **argv)
 		{
 			if (j == 0 && (argv[i][j] == '-' || argv[i][j] == '+'))
 				j++;
-			if (argv[i][j] >= '0' && argv[i][j] <= '9')
+			if ((argv[i][j] >= '0' && argv[i][j] <= '9') || argv[i][j] == 32)
 				j++;
 			else
 				return (0);
@@ -35,12 +33,10 @@ static int	check_int(int argc, char **argv)
 	return (1);
 }
 
-static int	check_lim(int argc, char **argv)
+static int	check_lim(int argc, char **argv, int i)
 {
-	int		i;
 	long	num;
 
-	i = 1;
 	while (i < argc)
 	{
 		num = ps_atol(argv[i]);
@@ -51,12 +47,10 @@ static int	check_lim(int argc, char **argv)
 	return (1);
 }
 
-static int	check_dup(int argc, char **argv)
+static int	check_dup(int argc, char **argv, int i)
 {
-	int	i;
 	int	j;
 
-	i = 1;
 	while (i < argc)
 	{
 		j = i + 1;
@@ -71,18 +65,44 @@ static int	check_dup(int argc, char **argv)
 	return (1);
 }
 
-int	check_error(int argc, char **argv)
+int	check_all(int argc, char **argv, int i)
 {
-	if (argc < 2)
-		return (0);
-	if (check_int(argc, argv))
+	if (check_int(argc, argv, i))
 	{
-		if (check_lim(argc, argv))
+		if (check_lim(argc, argv, i))
 		{
-			if (check_dup(argc, argv))
+			if (check_dup(argc, argv, i))
 				return (1);
 		}
 	}
+	return (0);
+}
+
+int	check_error(int argc, char **argv)
+{
+	int		x;
+	int		f;
+	int		s;
+	char	**split;
+
+	if (argc < 2)
+		return (0);
+	if (argc == 2)
+	{
+		x = 0;
+		s = count_del(argv[1], ' ');
+		split = ft_split(argv[1], ' ');
+		if (check_all(s, split, 0))
+			x = 1;
+		f = 0;
+		while (split[f])
+			free(split[f++]);
+		free(split);
+		if (x == 1)
+			return (1);
+	}
+	else if (check_all(argc, argv, 1))
+		return (1);
 	write(2, "Error\n", 6);
 	return (0);
 }

@@ -17,13 +17,16 @@ static void	op_rotate(t_stack **head)
 	t_stack	*temp;
 	t_stack	*temp2;
 
-	temp = *head;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp2 = *head;
-	*head = (*head)->next;
-	temp->next = temp2;
-	temp2->next = NULL;
+	if (ps_lstsize(*head) > 1)
+	{
+		temp = *head;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp2 = *head;
+		*head = (*head)->next;
+		temp->next = temp2;
+		temp2->next = NULL;
+	}
 }
 
 void	ra(t_stack **a)

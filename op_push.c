@@ -16,6 +16,8 @@ static void	op_push(t_stack **head1, t_stack **head2)
 {
 	t_stack	*temp;
 
+	if (*head1 == NULL)
+		return ;
 	temp = *head1;
 	*head1 = (*head1)->next;
 	temp->next = *head2;

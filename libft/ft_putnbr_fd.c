@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luce <bde-luce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:10:47 by bde-luce          #+#    #+#             */
-/*   Updated: 2024/10/24 19:07:21 by bde-luce         ###   ########.fr       */
+/*   Created: 2024/04/18 15:39:53 by bde-luce          #+#    #+#             */
+/*   Updated: 2024/10/24 15:38:06 by bde-luce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = NULL;
-	b = NULL;
-	if (!check_error(argc, argv))
-		return (0);
-	create_stack(argc, argv, &a);
-	order_stack(&a, &b);
-	ps_lstclear(&a);
-	ps_lstclear(&b);
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n < 0)
+	{
+		write(fd, "-", 1);
+		ft_putnbr_fd(n * (-1), fd);
+	}
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		n += 48;
+		write(fd, &n, 1);
+	}
 }

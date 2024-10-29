@@ -14,7 +14,7 @@
 
 int	check_order(t_stack *a)
 {
-	while (a->next != NULL)
+	while (a != NULL && a->next != NULL)
 	{
 		if (a->content > a->next->content)
 			return (0);
@@ -22,24 +22,6 @@ int	check_order(t_stack *a)
 	}
 	return (1);
 }
-
-/*void	order_last3(t_stack **a)
-{
-	int	x;
-	int	y;
-
-	while (!check_order(*a))
-	{
-		x = (*a)->content;
-		y = (*a)->next->content;
-		if (check_max(*a, x))
-			ra(a);
-		else if (check_max(*a, y))
-			rra(a);
-		else
-			sa(a);
-	}
-}*/
 
 void	order_last3(t_stack **a)
 {

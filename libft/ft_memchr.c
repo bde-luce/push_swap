@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luce <bde-luce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:10:47 by bde-luce          #+#    #+#             */
-/*   Updated: 2024/10/24 19:07:21 by bde-luce         ###   ########.fr       */
+/*   Created: 2024/04/12 17:16:20 by bde-luce          #+#    #+#             */
+/*   Updated: 2024/10/24 15:37:20 by bde-luce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_stack	*a;
-	t_stack	*b;
+	size_t	i;
 
-	a = NULL;
-	b = NULL;
-	if (!check_error(argc, argv))
-		return (0);
-	create_stack(argc, argv, &a);
-	order_stack(&a, &b);
-	ps_lstclear(&a);
-	ps_lstclear(&b);
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)s)[i] == (unsigned char)c)
+			return ((void *)s + i);
+		i++;
+	}
+	return (NULL);
 }

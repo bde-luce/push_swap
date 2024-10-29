@@ -6,7 +6,7 @@
 /*   By: bde-luce <bde-luce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:12:03 by bde-luce          #+#    #+#             */
-/*   Updated: 2024/10/16 23:13:06 by bde-luce         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:04:44 by bde-luce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <limits.h>
 # include "ft_printf/ft_printf.h"
+# include "libft/libft.h"
 
 typedef struct s_stack
 {

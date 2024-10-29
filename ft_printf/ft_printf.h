@@ -6,7 +6,7 @@
 /*   By: bde-luce <bde-luce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:10:17 by bde-luce          #+#    #+#             */
-/*   Updated: 2024/05/31 17:15:03 by bde-luce         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:10:36 by bde-luce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define FT_PRINTF_H
 
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <limits.h>
 # include <stdarg.h>
 

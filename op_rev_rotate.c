@@ -17,15 +17,18 @@ static void	op_rev_rotate(t_stack **head)
 	t_stack	*temp;
 	t_stack	*temp2;
 
-	temp = *head;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp2 = *head;
-	while ((*head)->next->next != NULL)
-		*head = (*head)->next;
-	(*head)->next = NULL;
-	temp->next = temp2;
-	*head = temp;
+	if (ps_lstsize(*head) > 1)
+	{
+		temp = *head;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp2 = *head;
+		while ((*head)->next->next != NULL)
+			*head = (*head)->next;
+		(*head)->next = NULL;
+		temp->next = temp2;
+		*head = temp;
+	}
 }
 
 void	rra(t_stack **a)

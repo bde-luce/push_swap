@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luce <bde-luce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:10:47 by bde-luce          #+#    #+#             */
-/*   Updated: 2024/10/24 19:07:21 by bde-luce         ###   ########.fr       */
+/*   Created: 2024/04/12 11:55:37 by bde-luce          #+#    #+#             */
+/*   Updated: 2024/10/24 15:38:50 by bde-luce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	t_stack	*a;
-	t_stack	*b;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	a = NULL;
-	b = NULL;
-	if (!check_error(argc, argv))
-		return (0);
-	create_stack(argc, argv, &a);
-	order_stack(&a, &b);
-	ps_lstclear(&a);
-	ps_lstclear(&b);
+	i = 0;
+	j = 0;
+	while (dst[i])
+		i++;
+	if (size < i)
+		k = size;
+	else
+		k = i;
+	while (src[j] && (i + 1) < size)
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
+	}
+	dst[i] = '\0';
+	i = 0;
+	return (k + ft_strlen(src));
 }

@@ -14,11 +14,29 @@
 
 void	create_stack(int argc, char **argv, t_stack **a)
 {
-	int	i;
+	int		i;
+	int		j;
+	int		f;
+	char	**split;
 
 	i = 1;
 	while (i < argc)
-		ps_lstadd_back(a, ps_lstnew(ps_atoi(argv[i++])));
+	{
+		if (ft_strchr(argv[i], ' '))
+		{
+			split = ft_split(argv[i], ' ');
+			j = 0;
+			while (split[j])
+				ps_lstadd_back(a, ps_lstnew(ps_atoi(split[j++])));
+			f = 0;
+			while (split[f])
+				free(split[f++]);
+			free(split);
+		}
+		else
+			ps_lstadd_back(a, ps_lstnew(ps_atoi(argv[i])));
+		i++;
+	}
 }
 
 void	order_stack(t_stack **a, t_stack **b)

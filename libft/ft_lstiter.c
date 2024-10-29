@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luce <bde-luce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:10:47 by bde-luce          #+#    #+#             */
-/*   Updated: 2024/10/24 19:07:21 by bde-luce         ###   ########.fr       */
+/*   Created: 2024/05/02 00:42:21 by bde-luce          #+#    #+#             */
+/*   Updated: 2024/10/24 15:36:44 by bde-luce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = NULL;
-	b = NULL;
-	if (!check_error(argc, argv))
-		return (0);
-	create_stack(argc, argv, &a);
-	order_stack(&a, &b);
-	ps_lstclear(&a);
-	ps_lstclear(&b);
+	if (!lst || !f)
+		return ;
+	while (lst != NULL)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   op_push_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luce <bde-luce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:10:47 by bde-luce          #+#    #+#             */
-/*   Updated: 2024/10/24 19:07:21 by bde-luce         ###   ########.fr       */
+/*   Created: 2024/10/23 14:35:19 by bde-luce          #+#    #+#             */
+/*   Updated: 2024/10/24 15:40:58 by bde-luce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	main(int argc, char **argv)
+static void	op_push_b(t_stack **head1, t_stack **head2)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack	*temp;
 
-	a = NULL;
-	b = NULL;
-	if (!check_error(argc, argv))
-		return (0);
-	create_stack(argc, argv, &a);
-	order_stack(&a, &b);
-	ps_lstclear(&a);
-	ps_lstclear(&b);
+	if (*head1 == NULL)
+		return ;
+	temp = *head1;
+	*head1 = (*head1)->next;
+	temp->next = *head2;
+	*head2 = temp;
+}
+
+void	pa_b(t_stack **a, t_stack **b)
+{
+	op_push_b(b, a);
+}
+
+void	pb_b(t_stack **a, t_stack **b)
+{
+	op_push_b(a, b);
 }

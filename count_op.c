@@ -12,6 +12,13 @@
 
 #include "push_swap.h"
 
+static int	check_value_is_next(t_stack *b, int value)
+{
+	if (value > b->content || value < b->next->content)
+		return (0);
+	return (1);
+}
+
 int	count_rb(t_stack *b, int value)
 {
 	int	moves;
@@ -19,21 +26,21 @@ int	count_rb(t_stack *b, int value)
 	moves = 0;
 	if (check_min(b, value) || check_max(b, value))
 	{
-		while ((b->content < max(b, b->content))/* && (b->next != NULL)*/)
+		while ((b->content < max(b, b->content)))
 		{
 			moves++;
 			b = b->next;
 		}
 	}
 	else if (b->content > value || ps_lstlast(b)->content < value)
+	{
+		moves = 1;
+		while (check_value_is_next(b, value) == 0)
 		{
-			moves = 1;
-			while ((value > b->content || value < b->next->content)/* && (b->next->next != NULL)*/)
-			{
-				moves++;
-				b = b->next;
-			}
+			moves++;
+			b = b->next;
 		}
+	}
 	return (moves);
 }
 
@@ -44,7 +51,7 @@ int	count_rrb(t_stack *b, int value)
 	moves = 0;
 	if (check_min(b, value) || check_max(b, value))
 	{
-		while ((b->content < max(b, b->content))/* && (b->next != NULL)*/)
+		while ((b->content < max(b, b->content)))
 			b = b->next;
 		while (b != NULL)
 		{
@@ -53,15 +60,15 @@ int	count_rrb(t_stack *b, int value)
 		}
 	}
 	else if (b->content > value || ps_lstlast(b)->content < value)
+	{
+		while (!check_value_is_next(b, value) && (b->next->next != NULL))
+			b = b->next;
+		while (b->next != NULL)
 		{
-			while ((value > b->content || value < b->next->content) && (b->next->next != NULL))
-				b = b->next;
-			while (b->next != NULL)
-			{
-				moves++;
-				b = b->next;
-			}
+			moves++;
+			b = b->next;
 		}
+	}
 	return (moves);
 }
 
